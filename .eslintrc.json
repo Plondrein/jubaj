@@ -3,10 +3,6 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
-  "plugins": ["prettier"],
-  "rules": {
-    "prettier/prettier": "error"
-  },
   "overrides": [
     {
       "files": [
@@ -19,6 +15,7 @@
         "createDefaultProgram": true
       },
       "extends": [
+        "plugin:prettier/recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
@@ -41,6 +38,7 @@
         ]
       }
     },
+    // NOTE: WE ARE NOT APPLYING PRETTIER IN THIS OVERRIDE, ONLY @ANGULAR-ESLINT/TEMPLATE
     {
       "files": [
         "*.html"
@@ -49,6 +47,21 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {}
+    },
+    // NOTE: WE ARE NOT APPLYING @ANGULAR-ESLINT/TEMPLATE IN THIS OVERRIDE, ONLY PRETTIER
+    {
+      "files": ["*.html"],
+      "excludedFiles": ["*inline-template-*.component.html"],
+      "extends": ["plugin:prettier/recommended"],
+      "rules": {
+        // NOTE: WE ARE OVERRIDING THE DEFAULT CONFIG TO ALWAYS SET THE PARSER TO ANGULAR (SEE BELOW)
+        "prettier/prettier": [
+          "warn",
+          {
+            "parser": "angular"
+          }
+        ]
+      }
     }
   ]
 }
