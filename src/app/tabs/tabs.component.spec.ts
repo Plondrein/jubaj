@@ -5,7 +5,7 @@ import { MatTabHarness } from '@angular/material/tabs/testing';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TabsComponentModule } from './tabs.component.module';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('TabsComponent', () => {
   let component: TabsComponent;
@@ -14,7 +14,7 @@ describe('TabsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TabsComponentModule, BrowserAnimationsModule],
+      imports: [TabsComponentModule, NoopAnimationsModule],
     }).compileComponents();
   });
 
